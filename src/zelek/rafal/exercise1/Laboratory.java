@@ -1,5 +1,7 @@
 package zelek.rafal.exercise1;
 
+import zelek.rafal.common.ArgumentsParser;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -21,17 +23,8 @@ final public class Laboratory {
     };
 
     public Laboratory(String[] args) {
-        final Stream<String> input = Arrays.stream(args);
-        final Stream<Optional<Integer>> parsedInput = input.map(this::parseStringToInteger);
-        final Stream<Integer> collectedInput = parsedInput.filter(Optional::isPresent).map(Optional::get);
-        result = createQuadraticEquation.apply(collectedInput);
+        result = createQuadraticEquation.apply(ArgumentsParser.getInstance().integerInput(args));
     }
 
-    private Optional<Integer> parseStringToInteger(String value) {
-        try {
-            return Optional.of(Integer.parseInt(value));
-        } catch (NumberFormatException e) {
-            return Optional.empty();
-        }
-    }
+
 }
