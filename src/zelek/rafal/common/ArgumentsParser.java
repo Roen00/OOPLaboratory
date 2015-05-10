@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class ArgumentsParser {
+final public class ArgumentsParser {
     private static ArgumentsParser ourInstance = new ArgumentsParser();
 
     private ArgumentsParser() {
@@ -20,7 +20,7 @@ public class ArgumentsParser {
         return parsedInput.filter(Optional::isPresent).map(Optional::get);
     }
 
-    private Optional<Integer> parseStringToInteger(String value) {
+    public Optional<Integer> parseStringToInteger(String value) {
         try {
             return Optional.of(Integer.parseInt(value));
         } catch (NumberFormatException e) {
