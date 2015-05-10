@@ -1,4 +1,4 @@
-package zelek.rafal.zadanie;
+package zelek.rafal.zadanie1;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package zelek.rafal.zadanie;
+package zelek.rafal.zadanie1;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Laboratory1 {
+public class Laboratory {
 
     public final Optional<QuadraticEquation> result;
 
@@ -20,7 +20,7 @@ public class Laboratory1 {
         }
     };
 
-    public Laboratory1(String[] args) {
+    public Laboratory(String[] args) {
         final Stream<String> input = Arrays.stream(args);
         final Stream<Optional<Integer>> parsedInput = input.map(this::parseStringToInteger);
         final Stream<Integer> collectedInput = parsedInput.filter(Optional::isPresent).map(Optional::get);
