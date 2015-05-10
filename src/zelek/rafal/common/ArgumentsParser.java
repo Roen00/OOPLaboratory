@@ -2,10 +2,18 @@ package zelek.rafal.common;
 
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.function.BiFunction;
 import java.util.stream.Stream;
 
 final public class ArgumentsParser {
     private static ArgumentsParser ourInstance = new ArgumentsParser();
+    public BiFunction<String[], Integer, Optional<String[]>> validateArgumentsLength = (args, expectedLength) -> {
+        if (args.length == expectedLength) {
+            return Optional.of(args);
+        } else {
+            return Optional.empty();
+        }
+    };
 
     private ArgumentsParser() {
     }
