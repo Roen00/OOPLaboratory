@@ -11,16 +11,16 @@ class QuadraticEquation {
     public final Double delta;
     public final List<Double> square;
 
-    public static Optional<QuadraticEquation> apply(int a, int b, int c) {
-        return a == 0 ? Optional.empty() : Optional.of(new QuadraticEquation(a, b, c));
-    }
-
     private QuadraticEquation(int a, int b, int c) {
         this.a = a;
         this.b = b;
         this.c = c;
         delta = calculateDelta(a, b, c);
         square = calculateSquare(delta, a, b);
+    }
+
+    public static Optional<QuadraticEquation> apply(int a, int b, int c) {
+        return a == 0 ? Optional.empty() : Optional.of(new QuadraticEquation(a, b, c));
     }
 
     private double calculateDelta(int a, int b, int c) {
