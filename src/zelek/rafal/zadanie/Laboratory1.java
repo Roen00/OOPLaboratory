@@ -1,9 +1,10 @@
 package zelek.rafal.zadanie;
 
 import java.util.Arrays;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Laboratory1 {
@@ -11,9 +12,9 @@ public class Laboratory1 {
     public final Optional<QuadraticEquation> result;
 
     private final Function<Stream<Integer>, Optional<QuadraticEquation>> createQuadraticEquation = (parameters) -> {
-        if (parameters.count() == 3) {
-            final Iterator<Integer> it = parameters.iterator();
-            return QuadraticEquation.apply(it.next(), it.next(), it.next());
+        final List<Integer> p = parameters.collect(Collectors.toList());
+        if (p.size() == 3) {
+            return QuadraticEquation.apply(p.get(0), p.get(1), p.get(2));
         } else {
             return Optional.empty();
         }
