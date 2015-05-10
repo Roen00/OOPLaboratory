@@ -47,7 +47,7 @@ public class QuadraticEquationTest {
     }
 
     @Test
-    public void squareShouldContainsTheTwoResults() {
+    public void squareShouldContainsTheTwoResultsForDeltaGreaterThanZero() {
         //Given quadratic equation parameters
         int a = 2;
         int b = -3;
@@ -59,6 +59,42 @@ public class QuadraticEquationTest {
         //Then I expect square equals to 0.5 and 1
         List<Double> expected = Arrays.asList(0.5d, 1d);
         assertThat(result, is(expected));
+        //And The delta greater than zero
+        assertTrue(quadraticEquation.get().delta > 0);
+    }
+
+    @Test
+    public void squareShouldContainsTheOneResultForDeltaEqualToZero() {
+        //Given quadratic equation parameters
+        int a = 1;
+        int b = 0;
+        int c = 0;
+        //When I create the quadraticEquation
+        Optional<QuadraticEquation> quadraticEquation = QuadraticEquation.apply(a, b, c);
+        //And when I get the square
+        List<Double> result = quadraticEquation.get().square;
+        //Then I expect the square equal to 0
+        List<Double> expected = Arrays.asList(0d);
+        assertThat(result, is(expected));
+        //And The delta equal to zero
+        assertThat(quadraticEquation.get().delta, is(0d));
+    }
+
+    @Test
+    public void squareShouldContainsTheEmptyResultForDeltaLowerThanZero() {
+        //Given quadratic equation parameters
+        int a = 1;
+        int b = 0;
+        int c = 20;
+        //When I create the quadraticEquation
+        Optional<QuadraticEquation> quadraticEquation = QuadraticEquation.apply(a, b, c);
+        //And when I get the square
+        List<Double> result = quadraticEquation.get().square;
+        //Then I expect the square equal to 0
+        List<Double> expected = Arrays.asList();
+        assertThat(result, is(expected));
+        //And The delta is lower than zero
+        assertTrue(quadraticEquation.get().delta < 0);
     }
 
     @Test
