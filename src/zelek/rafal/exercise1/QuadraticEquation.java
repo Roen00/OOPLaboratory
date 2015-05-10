@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-class QuadraticEquation {
+final class QuadraticEquation {
     public final int a;
     public final int b;
     public final int c;
