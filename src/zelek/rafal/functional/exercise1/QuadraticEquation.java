@@ -1,4 +1,4 @@
-package zelek.rafal.exercise1;
+package zelek.rafal.functional.exercise1;
 
 import java.util.Arrays;
 import java.util.List;
